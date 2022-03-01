@@ -31,6 +31,11 @@ class MainViewController: UIViewController {
     
     // MARK: - methods
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     private func configureCurrencyView() {
         currencyView.backgroundColor = Styles.currencyViewColor
         currencyView.layer.cornerRadius = Styles.currencyViewCornerRadius
@@ -42,7 +47,32 @@ class MainViewController: UIViewController {
     
     func configureLabels(baseNumberOfEUR: Double) {
         self.activityIndicatorView.isHidden = true
-        self.firstConvertResultLabel.text = String(baseNumberOfEUR * currency.USDtoEUR)
-        self.secondConvertResultLabel.text = String(baseNumberOfEUR * currency.RUBtoEUR)
+        self.firstConvertResultLabel.text = currency.convert(baseNumber: baseNumberOfEUR, currency: currency.USDtoEUR)
+        self.secondConvertResultLabel.text = currency.convert(baseNumber: baseNumberOfEUR, currency: currency.RUBtoEUR)
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func actionButtonTapped(_ sender: UIBarButtonItem) {
+        let dataForSharing = ["At the moment \(currency.baseNumber) euros = \(currency.convert(baseNumber: currency.baseNumber, currency: currency.USDtoEUR)) dollars or \(currency.convert(baseNumber: currency.baseNumber, currency: currency.RUBtoEUR)) rubles"]
+        let shareController = UIActivityViewController(activityItems: dataForSharing, applicationActivities: nil)
+        shareController.popoverPresentationController?.barButtonItem = sender
+        shareController.popoverPresentationController?.permittedArrowDirections = .any
+        present(shareController, animated: true, completion: nil)
+    }
+}
+
+extension MainViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let char = string.cString(using: String.Encoding.utf8)!
+        let isBackSpace = strcmp(char, "\\b")
+        var inputNumber = "\(textField.text!)\(string)"
+        if (isBackSpace == -92) {
+            print("Backspace was pressed")
+            inputNumber.remove(at: inputNumber.index(before: inputNumber.endIndex))
+        }
+        currency.baseNumber = Double(inputNumber) ?? 0.0
+        configureLabels(baseNumberOfEUR: Double(inputNumber) ?? 1.0)
+        return true
     }
 }

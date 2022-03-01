@@ -17,6 +17,11 @@ class Currency {
         return _sharedInstance!
     }
     
+    lazy var baseNumber = 0.0
     lazy var USDtoEUR = 0.0
     lazy var RUBtoEUR = 0.0
+    
+    func convert(baseNumber: Double, currency: Double) -> String {
+        return String(baseNumber * currency)
+    }
 }
