@@ -58,6 +58,12 @@
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dxv-bh-Uly">
                                         <rect key="frame" x="173.5" y="131.5" width="37" height="37"/>
                                     </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last update time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZS-aM-6QS">
+                                        <rect key="frame" x="248" y="271" width="128" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="placeholderTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
@@ -67,6 +73,7 @@
                                     <constraint firstItem="Uem-wX-Shn" firstAttribute="centerY" secondItem="cb9-KS-E57" secondAttribute="centerY" id="KPM-H7-M5X"/>
                                     <constraint firstItem="dxv-bh-Uly" firstAttribute="centerX" secondItem="cb9-KS-E57" secondAttribute="centerX" id="LWa-kl-L8B"/>
                                     <constraint firstAttribute="height" constant="300" id="NKx-lL-jSe"/>
+                                    <constraint firstAttribute="trailing" secondItem="LZS-aM-6QS" secondAttribute="trailing" constant="8" id="Nue-Dx-po2"/>
                                     <constraint firstItem="fF0-ca-BUb" firstAttribute="leading" secondItem="cb9-KS-E57" secondAttribute="leading" constant="30" id="VeX-0v-OSN"/>
                                     <constraint firstItem="c53-3Y-yPP" firstAttribute="top" secondItem="cb9-KS-E57" secondAttribute="top" constant="60" id="WUn-BP-CsA"/>
                                     <constraint firstAttribute="bottom" secondItem="Nex-DC-EoL" secondAttribute="bottom" constant="60" id="WZd-Zq-4kD"/>
@@ -76,6 +83,7 @@
                                     <constraint firstAttribute="trailing" secondItem="uua-ZO-Lms" secondAttribute="trailing" constant="30" id="fap-e2-fFo"/>
                                     <constraint firstAttribute="bottom" secondItem="FBQ-jT-ruv" secondAttribute="bottom" constant="62" id="igN-Bb-sG9"/>
                                     <constraint firstItem="Nex-DC-EoL" firstAttribute="leading" secondItem="cb9-KS-E57" secondAttribute="leading" constant="30" id="tEQ-9m-rAz"/>
+                                    <constraint firstAttribute="bottom" secondItem="LZS-aM-6QS" secondAttribute="bottom" constant="8" id="uFF-xC-wLn"/>
                                     <constraint firstItem="uua-ZO-Lms" firstAttribute="leading" secondItem="c53-3Y-yPP" secondAttribute="trailing" constant="60" id="umV-Dl-K7Y"/>
                                 </constraints>
                             </view>
@@ -110,6 +118,7 @@
                         <outlet property="baseCurrencyTextField" destination="uua-ZO-Lms" id="4yU-EX-wxV"/>
                         <outlet property="currencyView" destination="cb9-KS-E57" id="Vfh-6Q-Lwu"/>
                         <outlet property="firstConvertResultLabel" destination="Uem-wX-Shn" id="LKR-ow-KPj"/>
+                        <outlet property="lastUpdateTimeLabel" destination="LZS-aM-6QS" id="z8p-vx-e1h"/>
                         <outlet property="secondConvertResultLabel" destination="FBQ-jT-ruv" id="Fc5-I8-WM7"/>
                     </connections>
                 </viewController>
@@ -139,6 +148,9 @@
     <resources>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

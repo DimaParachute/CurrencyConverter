@@ -8,7 +8,6 @@
 import Foundation
 
 class Currency {
-    
     static var _sharedInstance: Currency?
     class func sharedInstance() -> Currency {
         if _sharedInstance == nil {
@@ -16,6 +15,8 @@ class Currency {
         }
         return _sharedInstance!
     }
+    
+    lazy var dateAndTime = ""
     
     lazy var baseNumber = 0.0
     lazy var USDtoEUR = 0.0

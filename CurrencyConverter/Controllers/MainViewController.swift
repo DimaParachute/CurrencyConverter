@@ -16,6 +16,7 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var firstConvertResultLabel: UILabel!
     @IBOutlet weak var secondConvertResultLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var lastUpdateTimeLabel: UILabel!
     
     private var currency = Currency.sharedInstance()
     private var networkWorker = NetworkWorker()
@@ -49,6 +50,7 @@ final class MainViewController: UIViewController {
         self.activityIndicatorView.isHidden = true
         self.firstConvertResultLabel.text = currency.convert(baseNumber: baseNumberOfEUR, currency: currency.USDtoEUR)
         self.secondConvertResultLabel.text = currency.convert(baseNumber: baseNumberOfEUR, currency: currency.RUBtoEUR)
+        self.lastUpdateTimeLabel.text = currency.dateAndTime
     }
     
     // MARK: - IBActions
